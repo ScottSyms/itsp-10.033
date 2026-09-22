@@ -1,0 +1,66 @@
+sources:
+  nist_sp800_53_rev5_oscal:
+    publication: "NIST SP 800-53 Rev. 5"
+    title: "Security and Privacy Controls for Information Systems and Organizations"
+    type: "oscal_catalog"
+    authority: "NIST"
+    format: "json"
+    repository: "https://github.com/usnistgov/oscal-content"
+    path: "nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+    raw_url: "https://raw.githubusercontent.com/usnistgov/oscal-content/{ref}/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
+    api_commits_url: "https://api.github.com/repos/usnistgov/oscal-content/commits?path={path}&sha={ref}&per_page=1"
+    source_ref: "main" # resolve and record commit SHA during fetch
+    language: "en"
+    enabled: true
+
+  itsp_10_033:
+    publication: "ITSP.10.033"
+    title: "Security and privacy controls and assurance activities catalogue"
+    root_url: "https://www.cyber.gc.ca/en/guidance/cyber-security-privacy-risk-management/itsp10033"
+    toc_url: "https://www.cyber.gc.ca/en/guidance/cyber-security-privacy-risk-management/itsp10033/controls-assurance-activities-families"
+    type: "canadian_catalogue_overlay"
+    authority: "Canadian Centre for Cyber Security"
+    language: "en"
+    enabled: true
+    # Family slugs discovered from the table-of-contents page, in family order. Kept explicit
+    # (rather than only discovered at fetch time) so an unexpected TOC change is a visible diff,
+    # but `fetch` re-discovers and validates against this list every run (spec 7.2 step 2).
+    families:
+      - { id: "AC", name: "Access control", slug: "access-control" }
+      - { id: "AT", name: "Awareness and training", slug: "awareness-training" }
+      - { id: "AU", name: "Audit and accountability", slug: "audit-accountability" }
+      - { id: "CA", name: "Assessment, authorization, and monitoring", slug: "assessment-authorization-monitoring" }
+      - { id: "CM", name: "Configuration management", slug: "configuration-management" }
+      - { id: "CP", name: "Contingency planning", slug: "contingency-planning" }
+      - { id: "IA", name: "Identification and authentication", slug: "identification-authentication" }
+      - { id: "IR", name: "Incident response", slug: "incident-response" }
+      - { id: "MA", name: "Maintenance", slug: "maintenance" }
+      - { id: "MP", name: "Media protection", slug: "media-protection" }
+      - { id: "PE", name: "Physical and environmental protection", slug: "physical-environmental-protection" }
+      - { id: "PL", name: "Planning", slug: "planning" }
+      - { id: "PM", name: "Program management", slug: "program-management" }
+      - { id: "PS", name: "Personnel security", slug: "personnel-security" }
+      - { id: "PT", name: "Personal information handling and transparency", slug: "personal-information-handling-transparency" }
+      - { id: "RA", name: "Risk assessment", slug: "risk-assessment" }
+      - { id: "SA", name: "System and services acquisition", slug: "system-services-acquisition" }
+      - { id: "SC", name: "System and communications protection", slug: "system-communications-protection" }
+      - { id: "SI", name: "System and information integrity", slug: "system-information-integrity" }
+      - { id: "SR", name: "Supply chain risk management", slug: "supply-chain-risk-management" }
+
+  itsp_10_033_01:
+    publication: "ITSP.10.033-01"
+    title: "Suggested organizational security and privacy control and activity profile — Medium impact"
+    root_url: "https://www.cyber.gc.ca/en/guidance/cyber-security-privacy-risk-management/suggested-organizational-security-privacy-control-activity-profile-medium-impact-itsp10033-01"
+    type: "profile"
+    authority: "Canadian Centre for Cyber Security"
+    language: "en"
+    enabled: true
+
+  itsp_10_036:
+    publication: "ITSP.10.036"
+    title: "Organizational cyber security and privacy risk management activities"
+    root_url: "https://www.cyber.gc.ca/en/guidance/cyber-security-privacy-risk-management/organizational-cyber-security-privacy-risk-management-activities-itsp10036"
+    type: "lifecycle"
+    authority: "Canadian Centre for Cyber Security"
+    language: "en"
+    enabled: false

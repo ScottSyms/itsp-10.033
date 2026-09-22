@@ -1,0 +1,53 @@
+[project]
+name = "itsp-kb"
+version = "0.1.0"
+description = "NIST SP 800-53 Rev. 5 OSCAL baseline + Canadian ITSP.10.033 overlay knowledge-base extractor"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+  "httpx>=0.27",
+  "beautifulsoup4>=4.12",
+  "lxml>=5.2",
+  "pydantic>=2.7",
+  "typer>=0.12",
+  "pyyaml>=6.0",
+  "orjson>=3.10",
+  "jsonschema>=4.22",
+  "pandas>=2.2",
+  "openpyxl>=3.1",
+]
+
+[project.scripts]
+itsp-kb = "itsp_kb.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/itsp_kb"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.2",
+  "ruff>=0.5",
+  "mypy>=1.10",
+  "types-pyyaml>=6.0",
+  "types-jsonschema>=4.22",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["itsp_kb"]
+ignore_missing_imports = true

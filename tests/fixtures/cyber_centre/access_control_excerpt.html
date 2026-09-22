@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Fixture: access-control</title></head>
+<body><main><article>
+<h2 class="text-info" id="3.1-AC-01">AC-01 Access control policy and procedures</h2>
+<h3>Activity</h3>
+<ol class="lst-upr-alph"><li>Develop, document, and disseminate to [Assignment: organization-defined personnel or roles]
+	<ol><li>[Selection (1 or more): Organization-level; Mission/business process-level; System-level] access control policy that
+		<ol class="lst-lwr-alph"><li>addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance</li>
+<li>is consistent with applicable laws, Orders in Council, jurisprudence, directives, regulations, policies, standards, and guidelines</li>
+</ol></li>
+<li>procedures to facilitate the implementation of the access control policy and the associated access controls</li>
+</ol></li>
+<li>Designate an [Assignment: organization-defined official] to manage the development, documentation, and dissemination of the access control policy and procedures</li>
+<li>Review and update the current access control
+	<ol><li>policy [Assignment: organization-defined frequency] and following [Assignment: organization-defined events]</li>
+<li>procedures [Assignment: organization-defined frequency] and following [Assignment: organization-defined events]</li>
+</ol></li>
+</ol>
+<h3>Discussion</h3>
+<p>Access control policies and procedures address the controls in the AC family that are implemented within systems and organizations. The risk management strategy is an important factor in establishing such policies and procedures. Policies and procedures contribute to security and privacy assurance. Therefore, it is important that security and privacy functions collaborate on the development of access control policy and procedures. In general, security and privacy framework policies and procedures at the organization level are preferable and may prevent the need for mission- or system-specific policies and procedures. The access control policies can be included as part of the general security and privacy framework or be represented by multiple policies reflecting the complex nature of organizations.</p>
+<p>Procedures can be established for security and privacy, for mission or business processes, and for systems, if needed. Procedures describe how the policies or controls are implemented and can be directed at the individual or role that is the object of the procedure. Procedures can be documented in system security and privacy plans or in one or more separate documents. Privacy procedures should not be ad hoc in nature.</p>
+<p>Events that may precipitate an update to access control policy and procedures include assessment or audit findings, security incidents or breaches, legislative changes, jurisprudence, Orders in Council, directives, regulations, policies, standards, and guidelines. Simply restating controls does not constitute an organizational policy or procedure.</p>
+<h3>Related controls and activities</h3>
+<p>IA-01, PM-09, PM-24, PS-08, SI-02, SI-12.</p>
+<p><strong>Enhancements:</strong> None</p>
+<p><strong>References:</strong></p>
+<ul><li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32611&amp;section=procedure&amp;p=E"><abbr title="Treasury Board Secretariat">TBS</abbr> Directive on Security Management, Appendix E: Mandatory Procedures for Information Management Security Control </a></li>
+<li><a data-rel="internal" href="/en/guidance/introduction-cyber-threat-environment">An introduction to the cyber threat environment </a></li>
+<li><a href="https://www.canada.ca/en/treasury-board-secretariat/corporate/risk-management/guide-integrated-risk-management.html"><abbr title="Treasury Board Secretariat">TBS</abbr> Guide to Integrated Risk Management </a></li>
+</ul>
+<div class="pull-right small text-muted mrgn-bttm-0"><a href="#wb-tphp">Top of page</a> <span aria-hidden="true" class="text-primary glyphicon glyphicon-circle-arrow-up"></span></div>
+<div class="clearfix"> </div>
+<hr/>
+<hr/>
+<h2 class="text-info" id="3.1-AC-02">AC-02 Account management</h2>
+<h3>Control</h3>
+<ol class="lst-upr-alph"><li>Define and document the types of accounts allowed and specifically prohibited for use within the system</li>
+<li>Assign account managers and data custodians</li>
+<li>Require [Assignment: organization-defined prerequisites and criteria] for group and role membership</li>
+<li>Specify
+	<ol><li>authorized users of the system</li>
+<li>group and role membership</li>
+<li>access authorizations (i.e., privileges) and [Assignment: organization-defined attributes (as required)] for each account</li>
+</ol></li>
+<li>Require approvals by [Assignment: organization-defined personnel orroles] for requests to create accounts</li>
+<li>Create, enable, modify, disable, and remove accounts in accordance with [Assignment: organization-defined policy, procedures, prerequisites, and criteria]</li>
+<li>Monitor the use of accounts</li>
+<li>Notify account managers and [Assignment: organization-defined personnel or roles] within
+	<ol><li>[Assignment: organization-defined time period] when accounts are no longer required or are dormant</li>
+<li>[Assignment: organization-defined time period] when users are terminated or transferred</li>
+<li>[Assignment: organization-defined time period] when system usage or need-to-know changes for an individual</li>
+</ol></li>
+<li>Authorize access to the system based on
+	<ol><li>a valid access authorization</li>
+<li>intended system usage</li>
+<li>[Assignment: organization-defined attributes (as required)]</li>
+</ol></li>
+<li>Periodically review accounts for compliance with account management requirements [Assignment: organization-defined frequency]</li>
+<li>Establish and implement a process for changing shared or group account authenticators (if deployed) when individuals are removed from the group</li>
+<li>Align account management processes with personnel termination and transfer processes</li>
+</ol>
+<h3>Discussion</h3>
+<p>Examples of system account types include individual, shared, group, system, guest, anonymous, emergency, developer, temporary, and service. Identification of authorized system users and the specification of access privileges reflect the requirements in other controls related to security and privacy. Users requiring administrative privileges on system accounts receive additional scrutiny by organizational personnel responsible for approving such accounts and privileged access, including system owner, mission, or business owner, senior official in the department’s security governance, data custodian, or appropriate privacy senior official or executive. Types of accounts that organizations may wish to prohibit due to increased risk include shared, group, emergency, anonymous, temporary, and guest accounts.</p>
+<p>Where access involves personal information, security and privacy officials collaborate with the data custodian to establish the specific conditions for group and role membership; identify authorized users, group and role membership, and access authorizations for each account; and create, adjust, or remove system accounts in accordance with organizational policies. Policies can include such information as account expiration dates or other factors that trigger the disabling of accounts.</p>
+<p>Organizations may choose to define access privileges or other attributes by account, type of account, or a combination of the 2. Examples of other attributes required for authorizing access include restrictions on time of day, day of week, and point of origin. In defining other system account attributes, organizations consider system-related requirements and mission/business requirements. Failure to consider these factors could affect system availability.</p>
+<p>Temporary and emergency accounts are intended for short-term use. Organizations establish temporary accounts as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. Organizations establish emergency accounts in response to crisis situations and with the need for rapid account activation. Therefore, emergency account activation may bypass normal account authorization processes. Emergency and temporary accounts are not to be confused with infrequently used accounts, including local logon accounts used for special tasks or when network resources are unavailable (may also be known as accounts of last resort). Such accounts remain available and are not subject to automatic disabling or removal dates.</p>
+<p>Conditions for disabling or deactivating accounts include when shared/group, emergency, or temporary accounts are no longer required and when individuals are transferred or terminated. Changing shared/group authenticators when members leave the group is intended to ensure that former group members do not retain access to the shared or group account. Some types of system accounts may require specialized training.</p>
+<h3>Related controls and activities</h3>
+<p>AC-03, AC-05, AC-06, AC-17, AC-18, AC-20, AC-24, AU-02, AU-12, CM-05, IA-02, IA-04, IA-05, IA-08, MA-03, MA-05, PE-02, PL-04, PS-02, PS-04, PS-05, PS-07, PT-02, PT-03, SC-07, SC-12, SC-13, SC-37.</p>
+<h3>Enhancements</h3>
+<ul class="lst-none lst-spcd"><li><strong>(01) Account management: Automated system account management</strong>
+<ul class="list-unstyled"><li>Support of system accounts using [Assignment: organization-defined automated mechanisms].</li>
+<li><strong>Discussion:</strong> Automated system account management includes using automated mechanisms to
+		<ul><li>create, enable, modify, disable, and remove accounts</li>
+<li>notify account managers when an account is created, enabled, modified, disabled, or removed, or when users are terminated or transferred</li>
+<li>monitor system account usage; and report atypical system account usage</li>
+</ul></li>
+<li>Automated mechanisms can include internal system functions and email, telephonic, and text messaging notifications.</li>
+<li><strong>Related controls and activities:</strong> None.</li>
+</ul></li>
+<li><strong>(02) Account management: Automated temporary and emergency accounts management</strong>
+<ul class="list-unstyled"><li>Automatically [Selection (1): remove; disable] temporary and emergency accounts after [Assignment: organization-defined time period for each type of account].</li>
+<li><strong>Discussion:</strong> Management of temporary and emergency accounts includes the removal or disabling of such accounts automatically after a predefined time period rather than at the convenience of the system administrator. Automatic removal or disabling of accounts provides a more consistent implementation.</li>
+<li><strong>Related controls and activities:</strong> None.</li>
+</ul></li>
+<li><strong>(03) Account management: Disable accounts</strong>
+<ul class="list-unstyled"><li>Disable accounts within [Assignment: organization-defined time period] when the accounts
+		<ol class="lst-lwr-alph"><li>have expired</li>
+<li>are no longer associated with a user or individual</li>
+<li>are in violation of organizational policy</li>
+<li>have been inactive for [Assignment: organization-defined time period]</li>
+</ol></li>
+<li><strong>Discussion:</strong> Disabling expired, inactive, or otherwise anomalous accounts supports the concepts of least privilege and least functionality which reduce the attack surface of the system.</li>
+<li><strong>Related controls and activities:</strong> None</li>
+</ul></li>
+<li><strong>(04) Account management: Automated audit actions</strong>
+<ul class="list-unstyled"><li>Automatically audit account creation, modification, enabling, disabling, and removal actions.</li>
+<li><strong>Discussion:</strong> Account management audit records are defined in accordance with AU-02 and reviewed, analyzed, and reported in accordance with AU-06.</li>
+<li><strong>Related controls and activities:</strong> AU-02, AU-06.</li>
+</ul></li>
+<li><strong>(05) Account management: Inactivity logout</strong>
+<ul class="list-unstyled"><li>Require that users log out when [Assignment: organization-defined time period of expected inactivity or description of when to log out].</li>
+<li><strong>Discussion:</strong> Inactivity logout is behaviour- or policy-based and requires users to take physical action to log out when they are expecting inactivity longer than the defined period. Automatic enforcement of inactivity logout is addressed by AC-11.</li>
+<li><strong>Related controls and activities:</strong> AC-11.</li>
+</ul></li>
+<li><strong>(06) Account management: Dynamic privilege management</strong>
+<ul class="list-unstyled"><li>Implement [Assignment: organization-defined dynamic privilege management capabilities].</li>
+<li><strong>Discussion:</strong> In contrast to access control approaches that employ static accounts and predefined user privileges, dynamic access control approaches rely on runtime access control decisions facilitated by dynamic privilege management, such as attribute-based access control (ABAC).<br/>
+		While user identities remain relatively constant over time, user privileges typically change more frequently based on ongoing mission or business requirements and the operational needs of organizations. An example of dynamic privilege management is the immediate revocation of privileges from users as opposed to requiring that users terminate and restart their sessions to reflect changes in privileges.<br/>
+		Dynamic privilege management can also include mechanisms that change user privileges based on dynamic rules as opposed to editing specific user profiles. Examples include automatic adjustments of user privileges if they are operating out of their normal work times, if their job function or assignment changes, or if systems are under duress or in emergency situations. Dynamic privilege management includes the effects of privilege changes, for example, when there are changes to encryption keys used for communications.</li>
+<li><strong>Related controls and activities:</strong> AC-16.</li>
+</ul></li>
+<li><strong>(07) Account management: Privileged user accounts</strong>
+<ul class="list-unstyled"><li>
+<ol class="lst-lwr-alph"><li>Establish and administer privileged user accounts in accordance with [Selection (1): a role-based access scheme; an attribute-based access scheme]</li>
+<li>Monitor privileged role or attribute assignments</li>
+<li>Monitor changes to roles or attributes</li>
+<li>Revoke access when privileged role or attribute assignments are no longer appropriate</li>
+</ol></li>
+<li><strong>Discussion:</strong> Privileged roles are organization-defined roles assigned to individuals that allow those individuals to perform certain security-relevant functions that ordinary users are not authorized to perform. Privileged roles include key management, account management, database administration, system and network administration, and web administration. A role-based access scheme organizes permitted system access and privileges into roles. In contrast, an attribute-based access scheme specifies allowed system access and privileges based on attributes.</li>
+<li><strong>Related controls and activities:</strong> None.</li>
+</ul></li>
+<li><strong>(08) Account management: Dynamic account management</strong>
+<ul class="list-unstyled"><li>Create, activate, manage, and deactivate [Assignment: organization-defined system accounts] dynamically.</li>
+<li><strong>Discussion:</strong> Approaches for dynamically creating, activating, managing, and deactivating system accounts rely on automatically provisioning the accounts at runtime for entities that were previously unknown. Organizations plan for the dynamic management, creation, activation, and deactivation of system accounts by establishing trust relationships, business rules, and mechanisms with appropriate authorities to validate related authorizations and privileges.</li>
+<li><strong>Related controls and activities:</strong> AC-16.</li>
+</ul></li>
+<li><strong>(09) Account management: Restrictions on use of shared and group accounts</strong>
+<ul class="list-unstyled"><li>Only permit the use of shared and group accounts that meet [Assignment: organization-defined conditions for establishing shared and group accounts].</li>
+<li><strong>Discussion:</strong> Before permitting the use of shared or group accounts, organizations consider the increased risk due to the lack of accountability with such accounts.</li>
+<li><strong>Related controls and activities:</strong> None.</li>
+</ul></li>
+<li><strong>(10) Account management: Shared and group account credential change </strong>
+<ul class="list-unstyled"><li>Withdrawn: Incorporated into AC-02.</li>
+</ul></li>
+<li><strong>(11) Account management: Usage conditions</strong>
+<ul class="list-unstyled"><li>Enforce [Assignment: organization-defined circumstances and/or usage conditions] for [Assignment: organization-defined system accounts].</li>
+<li><strong>Discussion:</strong> Specifying and enforcing usage conditions helps to enforce the principle of least privilege, increase user accountability, and enable effective account monitoring. Account monitoring includes alerts generated if the account is used in violation of organizational parameters. Organizations can describe specific conditions or circumstances under which system accounts can be used, such as by restricting usage to certain days of the week, time of day, or specific durations of time.</li>
+<li><strong>Related controls and activities:</strong> None.</li>
+</ul></li>
+<li><strong>(12) Account management: Account monitoring for atypical usage</strong>
+<ul class="list-unstyled"><li>
+<ol class="lst-lwr-alph"><li>Monitor system accounts for [Assignment: organization-defined atypical usage]</li>
+<li>Report atypical usage of system accounts to [Assignment: organization-defined personnel or roles]</li>
+</ol></li>
+<li><strong>Discussion:</strong> Atypical usage includes accessing systems at certain times of the day or from locations that are not consistent with the normal usage patterns of individuals. Monitoring for atypical usage may reveal rogue behaviour by individuals or an attack in progress. Account monitoring may inadvertently create privacy risks since data collected to identify atypical usage may reveal previously unknown information about the behaviour of individuals. Organizations assess and document privacy risks from monitoring accounts for atypical usage in their privacy impact assessment (PIA) and make determinations that are in alignment with their privacy program plan.</li>
+<li><strong>Related controls and activities:</strong> AU-06, AU-07, CA-07, IR-08, SI-04.</li>
+</ul></li>
+<li><strong>(13) Account management: Disable accounts for high-risk individuals</strong>
+<ul class="list-unstyled"><li>Disable accounts of individuals within [Assignment: organization-defined time period] of discovery of [Assignment: organization-defined significant risks].</li>
+<li><strong>Discussion:</strong> Users who pose a significant security and/or privacy risk include individuals for whom reliable evidence indicates either the intention to use authorized access to systems to cause harm or through whom adversaries will cause harm. Such harm includes adverse impacts to organizational operations, organizational assets, individuals, other organizations, or Canada. Close coordination among system administrators, legal staff, human resource managers, and authorizing officials is essential when disabling system accounts for high-risk individuals.</li>
+<li><strong>Related controls and activities:</strong> AU-06, SI-04.</li>
+</ul></li>
+</ul>
+<p><strong>References:</strong></p>
+<ul><li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32611&amp;section=procedure&amp;p=B"><abbr title="Treasury Board Secretariat">TBS</abbr> Directive on Security Management: Appendix B: Mandatory Procedures for Information Technology Security Control </a></li>
+<li><a data-rel="internal" href="/en/guidance/managing-and-controlling-administrative-privileges-itsap10094">Managing and controlling administrative privileges (ITSAP.10.094) </a></li>
+<li><a data-rel="internal" href="/en/guidance/how-protect-your-organization-insider-threats-itsap10003-0">How to protect your organization from insider threats (ITSAP.10.003)</a></li>
+</ul>
+<div class="pull-right small text-muted mrgn-bttm-0"><a href="#wb-tphp">Top of page</a> <span aria-hidden="true" class="text-primary glyphicon glyphicon-circle-arrow-up"></span></div>
+<div class="clearfix"> </div>
+<hr/>
+<hr/>
+<h2 class="text-info" id="3.1-AC-17">AC-17 Remote access</h2>
+<h3>Control</h3>
+<ol class="lst-upr-alph"><li>Establish and document usage restrictions, configuration/connection requirements, and implementation guidance for each type of remote access allowed</li>
+<li>Authorize each type of remote access to the system prior to allowing such connections</li>
+</ol>
+<h3>Discussion</h3>
+<p>Remote access is access to organizational systems (or processes acting on behalf of users) that communicate through external networks such as the Internet. Types of remote access include dial-up, broadband, and wireless. Organizations use encrypted virtual private networks (VPNs) to enhance confidentiality and integrity for remote connections. The use of encrypted <abbr title="virtual private network">VPN</abbr>s provides sufficient assurance to the organization that it can effectively treat such connections as internal networks if the cryptographic mechanisms used are implemented in accordance with applicable laws, Orders in Council, directives, regulations, policies, standards, and guidelines.</p>
+<p>Still, <abbr title="virtual private network">VPN</abbr> connections traverse external networks, and the encrypted <abbr title="virtual private network">VPN</abbr> does not enhance the availability of remote connections. <abbr title="virtual private network">VPN</abbr>s with encrypted tunnels can also affect the ability to adequately monitor network communications traffic for malicious code. Remote access controls apply to systems other than public web servers or systems designed for public access. Authorization of each remote access type addresses authorization prior to allowing remote access without specifying the specific formats for such authorization. While organizations may use information exchange and system connection security agreements to manage remote access connections to other systems, such agreements are addressed as part of CA-03. Enforcing access restrictions for remote access is addressed via AC-03.</p>
+<h3><abbr title="Government of Canada">GC</abbr> discussion</h3>
+<p>The organization ensures that all employees working off-site safeguard information as per the minimum requirements in accordance with the <abbr title="Treasury Board Secretariat">TBS</abbr> Directive on Security Management, Appendix C: Mandatory Procedures for Physical Security Control.</p>
+<h3>Related controls and activities</h3>
+<p>AC-02, AC-03, AC-04, AC-18, AC-19, AC-20, CA-03, CM-10, IA-02, IA-03, IA-08, MA-04, PE-17, PE-400, PL-02, PL-04, SC-10, SC-12, SC-13, SI-04.</p>
+<h3>Enhancements</h3>
+<ul class="lst-none lst-spcd"><li><strong>(01) Remote access: Monitoring and control</strong>
+<ul class="list-unstyled"><li>Employ automated mechanisms to monitor and control remote access methods.</li>
+<li><strong>Discussion:</strong> Monitoring and control of remote access methods allows organizations to detect attacks and help ensure compliance with remote access policies by auditing the connection activities of remote users on a variety of system components, including servers, notebook computers, workstations, smart phones, and tablets. Audit logging for remote access is enforced by AU-02. Audit events are defined in AU-02A.</li>
+<li><strong>Related controls and activities:</strong> AU-02, AU-06, AU-12, AU-14.</li>
+</ul></li>
+<li><strong>(02) Remote access: Protection of confidentiality and integrity using encryption</strong>
+<ul class="list-unstyled"><li>Implement cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions.</li>
+<li><strong>Discussion:</strong> <abbr title="virtual private network">VPN</abbr>s can be used to protect the confidentiality and integrity of remote access sessions. Transport Layer Security (TLS) is an example of a cryptographic protocol that provides end-to-end communications security over networks and is used for Internet communications and online transactions.</li>
+<li><strong>Related controls and activities:</strong> SC-08, SC-12, SC-13.</li>
+</ul></li>
+<li><strong>(03) Remote access: Managed access control points</strong>
+<ul class="list-unstyled"><li>Route remote accesses through authorized and managed network access control points.</li>
+<li><strong>Discussion:</strong> Organizations consider a managed access control points solution for external network connections since limiting the number of access control points for remote access reduces attack surfaces.</li>
+<li><strong><abbr title="Government of Canada">GC</abbr> discussion:</strong> <abbr title="Government of Canada">GC</abbr> departments and agencies consider the secure remote access infrastructure provided by Shared Services Canada for external network connections.</li>
+<li><strong>Related controls and activities:</strong> SC-07.</li>
+</ul></li>
+<li><strong>(04) Remote access: Privileged commands and access</strong>
+<ul class="list-unstyled"><li>
+<ol class="lst-lwr-alph"><li>Authorize the execution of privileged commands and access to security-relevant information via remote access only in a format that provides trustworthy evidence and for the following needs: [Assignment: organization-defined needs]</li>
+<li>Document the rationale for remote access in the security plan for the system</li>
+</ol></li>
+<li><strong>Discussion:</strong> Remote access to systems represents a significant potential vulnerability that can be exploited by adversaries. As such, restricting the execution of privileged commands and access to security-relevant information via remote access reduces the exposure of the organization and the susceptibility to threats by adversaries to the remote access capability.</li>
+<li><strong>Related controls and activities:</strong> AC-06, SC-12, SC-13.</li>
+</ul></li>
+<li><strong>(05) Remote access: Monitoring for unauthorized connections</strong>
+<ul class="list-unstyled"><li>Withdrawn: Incorporated into SI-04.</li>
+</ul></li>
+<li><strong>(06) Remote access: Protection of mechanism information</strong>
+<ul class="list-unstyled"><li>Protect information about remote access mechanisms from unauthorized use and disclosure.</li>
+<li><strong>Discussion:</strong> Remote access to organizational information by non-organizational entities can increase the risk of unauthorized use and disclosure about remote access mechanisms. The organization considers including remote access requirements in the information exchange agreements with other organizations, as applicable. Remote access requirements can also be included in rules of behaviour (see PL-04) and access agreements (see PS-06).</li>
+<li><strong>Related controls and activities:</strong> AT-02, AT-03, PS-06.</li>
+</ul></li>
+<li><strong>(07) Remote access: Additional protection for security function access </strong>
+<ul class="list-unstyled"><li>Withdrawn: Incorporated into AC-03(10).</li>
+</ul></li>
+<li><strong>(08) Remote access: Disable nonsecure network protocols</strong>
+<ul class="list-unstyled"><li>Withdrawn: Incorporated into CM-07.</li>
+</ul></li>
+<li><strong>(09) Remote access: Disconnect or disable access</strong>
+<ul class="list-unstyled"><li>Provide the capability to disconnect or disable remote access to the system within [Assignment: organization-defined time period].</li>
+<li><strong>Discussion:</strong> The speed of system disconnect or disablement varies based on the criticality of missions or business functions and the need to eliminate immediate or future remote access to systems.</li>
+<li><strong>Related controls and activities:</strong> None.</li>
+</ul></li>
+<li><strong>(10) Remote access: Authenticate remote commands</strong>
+<ul class="list-unstyled"><li>Implement [Assignment: organization-defined mechanisms] to authenticate [Assignment: organization-defined remote commands].</li>
+<li><strong>Discussion:</strong> Authenticating remote commands protects against unauthorized commands and the replay of authorized commands. The ability to authenticate remote commands is important for remote systems for which loss, malfunction, misdirection, or exploitation would have immediate or serious consequences, such as injury, death, property damage, loss of high-value assets, failure of mission or business functions, or compromise of classified or protected information. Authentication mechanisms for remote commands ensure that systems accept and execute commands in the order intended, execute only authorized commands, and reject unauthorized commands. Cryptographic mechanisms can be used, for example, to authenticate remote commands.</li>
+<li><strong>Related controls and activities:</strong> SC-12, SC-13, SC-23.</li>
+</ul></li>
+<li><strong>(400) Remote access: Privileged accounts remote access</strong>
+<ul class="list-unstyled"><li>Remote access to privileged accounts is done from dedicated management consoles only.</li>
+<li><strong>Discussion:</strong> Remote access to privileged accounts is performed on dedicated management consoles governed entirely by the system’s security policies and used exclusively for this purpose (e.g., Internet access not allowed). In the context of this control, remote access means anything not local to the host.</li>
+<li><strong>Related controls and activities:</strong> SI-400.</li>
+</ul></li>
+</ul>
+<p><strong>References:</strong></p>
+<ul><li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32611&amp;section=procedure&amp;p=C"><abbr title="Treasury Board Secretariat">TBS</abbr> Directive on Security Management, Appendix C: Mandatory Procedures for Physical Security Control </a></li>
+<li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32611&amp;section=procedure&amp;p=E"><abbr title="Treasury Board Secretariat">TBS</abbr> Directive on Security Management, Appendix E: Mandatory Procedures for Information Management Security Control</a></li>
+</ul>
+<div class="pull-right small text-muted mrgn-bttm-0"><a href="#wb-tphp">Top of page</a> <span aria-hidden="true" class="text-primary glyphicon glyphicon-circle-arrow-up"></span></div>
+<div class="clearfix"> </div>
+<hr/>
+</article></main></body></html>
