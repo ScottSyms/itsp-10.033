@@ -75,7 +75,9 @@ def _parse_references(nodes: list[Tag]) -> list[Reference]:
     return references
 
 
-def _parse_enhancements(nodes: list[Tag], *, parent_id: str, family_id: str) -> list[CanadianParsedEnhancement]:
+def _parse_enhancements(
+    nodes: list[Tag], *, parent_id: str, family_id: str, parent_is_canadian_specific: bool
+) -> list[CanadianParsedEnhancement]:
     enhancements: list[CanadianParsedEnhancement] = []
     for node in nodes:
         if node.name != "ul":
@@ -132,7 +134,9 @@ def _parse_enhancements(nodes: list[Tag], *, parent_id: str, family_id: str) -> 
                 discussion="\n\n".join(discussion_chunks) or None,
                 gc_discussion="\n\n".join(gc_discussion_chunks) or None,
                 related=extract_related_ids(" ".join(related_chunks)),
-                is_canadian_specific=int(enh_num) >= 400,
+                # An enhancement of a Canada-only (400-series) base has no possible NIST
+                # mapping regardless of its own number, so it inherits Canada-only status.
+                is_canadian_specific=parent_is_canadian_specific or int(enh_num) >= 400,
             )
             enh.odps = extract_odps_from_statement(enh.statements, enh.id)
             enhancements.append(enh)
@@ -215,7 +219,10 @@ def parse_family_html(
             related=extract_related_ids(_join_paragraphs(sections.sections.get("related controls and activities", []))),
             references=_parse_references(sections.sections.get("references", [])),
             enhancements=_parse_enhancements(
-                sections.sections.get("enhancements", []), parent_id=canonical_id, family_id=family_id
+                sections.sections.get("enhancements", []),
+                parent_id=canonical_id,
+                family_id=family_id,
+                parent_is_canadian_specific=parsed_id.is_canadian_specific,
             ),
             source=CanadaSourceRef(
                 publication="ITSP.10.033",
