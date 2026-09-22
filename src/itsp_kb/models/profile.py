@@ -23,6 +23,10 @@ class ProfileRecord(BaseModel):
     name: str
     requirement_kind: RequirementKind
     selected: bool
+    selected_raw: str
+    # The Medium-profile table gives each enhancement its own row (id "AC-02(01)"), so an
+    # enhancement's selection is already captured by its own ProfileRecord; this field is kept
+    # for schema compatibility with spec S8.2 but is not populated by the HTML table parser.
     suggested_enhancements: list[str] = Field(default_factory=list)
     suggested_placeholder_values_raw: str | None = None
     profile_specific_notes: str | None = None
