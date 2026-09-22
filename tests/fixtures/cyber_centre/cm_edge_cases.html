@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Fixture</title></head>
+<body><main><article>
+<h2 class="text-info" id="3.5-CM-06">CM-06 Configuration Settings</h2>
+<p><strong>Control:</strong></p>
+<ol class="lst-upr-alph"><li>Establish and document configuration settings for components employed within the system that reflect the most restrictive mode consistent with operational requirements using [Assignment: organization-defined common secure configurations]</li>
+<li>Implement the configuration settings</li>
+<li>Identify, document, and approve any deviations from established configuration settings for [Assignment: organization-defined system components] based on [Assignment: organization-defined operational requirements]</li>
+<li>Monitor and control changes to the configuration settings in accordance with organizational policies and procedures</li>
+</ol>
+<h3>Discussion</h3>
+<p>Configuration settings are the parameters that can be changed in the hardware, software, or firmware components of the system that affect the security and privacy posture or functionality of the system. Information technology products for which configuration settings can be defined include mainframe computers, servers, workstations, operating systems, mobile devices, input/output devices, protocols, and applications. Parameters that impact the security posture of systems include registry settings; account, file, or directory permission settings; and settings for functions, protocols, ports, services, and remote connections. Privacy parameters are parameters impacting the privacy posture of systems, including the parameters required to satisfy other privacy controls. Privacy parameters include settings for access controls, personal information, data accuracy requirements, data manipulation capabilities, data processing preferences, and information handling and retention permissions. Organizations establish organization-wide configuration settings and subsequently derive specific configuration settings for systems. The established settings become part of the configuration baseline for the system.</p>
+<p>Common secure configurations (also known as security configuration checklists, lockdown and hardening guides, and security reference guides) provide recognized, standardized, and established benchmarks that stipulate secure configuration settings for information technology products and platforms as well as instructions for configuring those products or platforms to meet operational requirements. Common secure configurations can be developed by a variety of organizations, including information technology product developers, manufacturers, vendors, federal agencies, consortia, academia, industry, and other organizations in the public and private sectors.</p>
+<p>Implementation of a common secure configuration may be mandated at the organization level, mission and business process level, system level, or at a higher level, including by a regulatory agency. Common secure configurations include the Baseline security requirements for network security zones (ITSP.80.022), Common Criteria Evaluated Configuration Guides, and the US Department of Defense (DoD) security technical implementation guides (STIGs), which affect the implementation of CM-06 and other controls such as AC-19 and CM-07. The Security Content Automation Protocol (SCAP) and the defined standards within the protocol provide an effective method to uniquely identify, track, and control configuration settings.</p>
+<h3>Related controls and activities</h3>
+<p>AC-03, AC-19, AU-02, AU-06, CA-09, CM-02, CM-03, CM-05, CM-07, CM-11, CP-07, CP-09, CP-10, IA-03, IA-05, PL-08, PL-09, RA-05, SA-04, SA-05, SA-08, SA-09, SC-18, SC-28, SC-43, SI-02, SI-04, SI-06.</p>
+<h3>Enhancements</h3>
+<ul class="lst-none lst-spcd"><li><strong>(01) Configuration settings: Automated management, application, and verification</strong>
+<ul class="list-unstyled"><li>Manage, apply, and verify configuration settings for [Assignment: organization-defined system components] using [Assignment: organization-defined automated mechanisms].</li>
+<li><strong>Discussion:</strong> Automated tools (for example, hardening tools, baseline configuration tools) can improve the accuracy, consistency, and availability of configuration settings information. Automation can also provide data aggregation and data correlation capabilities, alerting mechanisms, and dashboards to support risk-based decision-making within the organization.</li>
+<li><strong>Related controls and activities:</strong> CA-07.</li>
+</ul></li>
+<li><strong>(02) Configuration settings: Respond to unauthorized changes</strong>
+<ul class="list-unstyled"><li>Take the following actions in response to unauthorized changes to [Assignment: organization-defined configuration settings]: [Assignment: organization-defined actions].</li>
+<li><strong>Discussion:</strong> Responses to unauthorized changes to configuration settings include alerting designated organizational personnel, restoring established configuration settings, or — in extreme cases — halting affected system processing.</li>
+<li><strong>Related controls and activities:</strong> IR-04, IR-06, SI-07.</li>
+</ul></li>
+<li><strong>(03) Configuration settings: Unauthorized change detection</strong>
+<ul class="list-unstyled"><li>Withdrawn: Incorporated into SI-07.</li>
+</ul></li>
+<li><strong>(04) Configuration settings: Conformance demonstration</strong>
+<ul class="list-unstyled"><li>Withdrawn: Incorporated into CM-04.</li>
+</ul></li>
+</ul>
+<h3>References</h3>
+<ul><li><a data-rel="internal" href="/en/guidance/baseline-security-requirements-network-security-zones-version-20-itsp80022">Baseline security requirements for network security zones (ITSP.80.022</a></li>
+<li><a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32713"><abbr title="Treasury Board Secretariat">TBS</abbr> Directive on Service and Digital, Appendix G: Standard on Enterprise Information Technology Service Common Configurations </a></li>
+</ul>
+<div class="pull-right small text-muted mrgn-bttm-0"><a href="#wb-tphp">Top of page</a> <span aria-hidden="true" class="text-primary glyphicon glyphicon-circle-arrow-up"></span></div>
+<div class="clearfix"> </div>
+<hr/>
+</article></main></body></html>
