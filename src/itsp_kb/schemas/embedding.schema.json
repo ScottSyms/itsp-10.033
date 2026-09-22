@@ -1,0 +1,130 @@
+{
+  "properties": {
+    "embedding_id": {
+      "title": "Embedding Id",
+      "type": "string"
+    },
+    "record_id": {
+      "title": "Record Id",
+      "type": "string"
+    },
+    "record_kind": {
+      "title": "Record Kind",
+      "type": "string"
+    },
+    "family_id": {
+      "title": "Family Id",
+      "type": "string"
+    },
+    "family_name": {
+      "title": "Family Name",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "requirement_kind": {
+      "title": "Requirement Kind",
+      "type": "string"
+    },
+    "origin": {
+      "title": "Origin",
+      "type": "string"
+    },
+    "reconciliation_status": {
+      "title": "Reconciliation Status",
+      "type": "string"
+    },
+    "profile_medium": {
+      "title": "Profile Medium",
+      "type": "boolean"
+    },
+    "is_canadian_specific": {
+      "title": "Is Canadian Specific",
+      "type": "boolean"
+    },
+    "is_withdrawn": {
+      "title": "Is Withdrawn",
+      "type": "boolean"
+    },
+    "has_odp": {
+      "title": "Has Odp",
+      "type": "boolean"
+    },
+    "has_gc_discussion": {
+      "title": "Has Gc Discussion",
+      "type": "boolean"
+    },
+    "view": {
+      "title": "View",
+      "type": "string"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    },
+    "source_publication": {
+      "title": "Source Publication",
+      "type": "string"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Source Url"
+    },
+    "canadian_source_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Canadian Source Hash"
+    },
+    "nist_source_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Nist Source Hash"
+    }
+  },
+  "required": [
+    "embedding_id",
+    "record_id",
+    "record_kind",
+    "family_id",
+    "family_name",
+    "name",
+    "requirement_kind",
+    "origin",
+    "reconciliation_status",
+    "profile_medium",
+    "is_canadian_specific",
+    "is_withdrawn",
+    "has_odp",
+    "has_gc_discussion",
+    "view",
+    "text",
+    "source_publication",
+    "source_url",
+    "canadian_source_hash",
+    "nist_source_hash"
+  ],
+  "title": "EmbeddingRecord",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

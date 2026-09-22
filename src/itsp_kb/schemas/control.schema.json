@@ -1,0 +1,589 @@
+{
+  "$defs": {
+    "CanadaSourceRef": {
+      "properties": {
+        "publication": {
+          "title": "Publication",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        },
+        "retrieved_at": {
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "source_sha256": {
+          "title": "Source Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "publication",
+        "url",
+        "retrieved_at",
+        "source_sha256"
+      ],
+      "title": "CanadaSourceRef",
+      "type": "object"
+    },
+    "CanadianDelta": {
+      "properties": {
+        "title_changed": {
+          "default": false,
+          "title": "Title Changed",
+          "type": "boolean"
+        },
+        "statement_changed": {
+          "default": false,
+          "title": "Statement Changed",
+          "type": "boolean"
+        },
+        "discussion_changed": {
+          "default": false,
+          "title": "Discussion Changed",
+          "type": "boolean"
+        },
+        "parameters_changed": {
+          "default": false,
+          "title": "Parameters Changed",
+          "type": "boolean"
+        },
+        "related_changed": {
+          "default": false,
+          "title": "Related Changed",
+          "type": "boolean"
+        },
+        "references_changed": {
+          "default": false,
+          "title": "References Changed",
+          "type": "boolean"
+        },
+        "requirement_kind_changed": {
+          "default": false,
+          "title": "Requirement Kind Changed",
+          "type": "boolean"
+        },
+        "fields": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Fields",
+          "type": "array"
+        }
+      },
+      "title": "CanadianDelta",
+      "type": "object"
+    },
+    "NistSourceRef": {
+      "properties": {
+        "publication": {
+          "default": "NIST SP 800-53 Rev. 5",
+          "title": "Publication",
+          "type": "string"
+        },
+        "metadata_version": {
+          "title": "Metadata Version",
+          "type": "string"
+        },
+        "oscal_version": {
+          "title": "Oscal Version",
+          "type": "string"
+        },
+        "git_commit": {
+          "title": "Git Commit",
+          "type": "string"
+        },
+        "source_sha256": {
+          "title": "Source Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "metadata_version",
+        "oscal_version",
+        "git_commit",
+        "source_sha256"
+      ],
+      "title": "NistSourceRef",
+      "type": "object"
+    },
+    "Odp": {
+      "properties": {
+        "odp_id": {
+          "title": "Odp Id",
+          "type": "string"
+        },
+        "nist_param_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nist Param Id"
+        },
+        "operation": {
+          "$ref": "#/$defs/OdpOperation",
+          "default": "unknown"
+        },
+        "cardinality": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cardinality"
+        },
+        "raw": {
+          "title": "Raw",
+          "type": "string"
+        },
+        "prompt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prompt"
+        },
+        "options": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Options",
+          "type": "array"
+        },
+        "statement_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Statement Path"
+        },
+        "character_start": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Character Start"
+        },
+        "character_end": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Character End"
+        }
+      },
+      "required": [
+        "odp_id",
+        "raw"
+      ],
+      "title": "Odp",
+      "type": "object"
+    },
+    "OdpOperation": {
+      "enum": [
+        "assignment",
+        "selection",
+        "unknown"
+      ],
+      "title": "OdpOperation",
+      "type": "string"
+    },
+    "Origin": {
+      "enum": [
+        "nist_inherited",
+        "nist_modified_canada",
+        "nist_reclassified_activity",
+        "canada_only",
+        "unknown"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "ReconciliationStatus": {
+      "enum": [
+        "verified_inherited",
+        "verified_modified",
+        "verified_reclassified",
+        "verified_canada_only",
+        "unresolved"
+      ],
+      "title": "ReconciliationStatus",
+      "type": "string"
+    },
+    "RecordKind": {
+      "enum": [
+        "base",
+        "enhancement"
+      ],
+      "title": "RecordKind",
+      "type": "string"
+    },
+    "RecordSources": {
+      "properties": {
+        "nist": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NistSourceRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "canada": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CanadaSourceRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "RecordSources",
+      "type": "object"
+    },
+    "Reference": {
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "publisher": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publisher"
+        },
+        "external": {
+          "default": true,
+          "title": "External",
+          "type": "boolean"
+        },
+        "source_authority": {
+          "title": "Source Authority",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "source_authority"
+      ],
+      "title": "Reference",
+      "type": "object"
+    },
+    "RequirementKind": {
+      "enum": [
+        "control",
+        "activity",
+        "unknown"
+      ],
+      "title": "RequirementKind",
+      "type": "string"
+    },
+    "StatementNode": {
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "source_designator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Designator"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "children": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/StatementNode"
+          },
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "path",
+        "text"
+      ],
+      "title": "StatementNode",
+      "type": "object"
+    }
+  },
+  "description": "A final Canadian base control/activity or enhancement record.",
+  "properties": {
+    "schema_version": {
+      "default": "2.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "family_id": {
+      "title": "Family Id",
+      "type": "string"
+    },
+    "family_name": {
+      "title": "Family Name",
+      "type": "string"
+    },
+    "number": {
+      "title": "Number",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "record_kind": {
+      "$ref": "#/$defs/RecordKind"
+    },
+    "requirement_kind": {
+      "$ref": "#/$defs/RequirementKind"
+    },
+    "parent_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Id"
+    },
+    "enhancement_number": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Enhancement Number"
+    },
+    "origin": {
+      "$ref": "#/$defs/Origin"
+    },
+    "nist_oscal_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Nist Oscal Id"
+    },
+    "reconciliation_status": {
+      "$ref": "#/$defs/ReconciliationStatus"
+    },
+    "is_canadian_specific": {
+      "default": false,
+      "title": "Is Canadian Specific",
+      "type": "boolean"
+    },
+    "is_withdrawn": {
+      "default": false,
+      "title": "Is Withdrawn",
+      "type": "boolean"
+    },
+    "withdrawal_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Withdrawal Note"
+    },
+    "statements": {
+      "items": {
+        "$ref": "#/$defs/StatementNode"
+      },
+      "title": "Statements",
+      "type": "array"
+    },
+    "statement_text": {
+      "default": "",
+      "title": "Statement Text",
+      "type": "string"
+    },
+    "discussion": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Discussion"
+    },
+    "gc_discussion": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Gc Discussion"
+    },
+    "odps": {
+      "items": {
+        "$ref": "#/$defs/Odp"
+      },
+      "title": "Odps",
+      "type": "array"
+    },
+    "related": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Related",
+      "type": "array"
+    },
+    "references": {
+      "items": {
+        "$ref": "#/$defs/Reference"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "enhancement_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Enhancement Ids",
+      "type": "array"
+    },
+    "canadian_delta": {
+      "$ref": "#/$defs/CanadianDelta"
+    },
+    "profile_memberships": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "title": "Profile Memberships",
+      "type": "object"
+    },
+    "sources": {
+      "$ref": "#/$defs/RecordSources"
+    },
+    "content_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Content Hash"
+    }
+  },
+  "required": [
+    "id",
+    "family_id",
+    "family_name",
+    "number",
+    "name",
+    "record_kind",
+    "requirement_kind",
+    "origin",
+    "reconciliation_status"
+  ],
+  "title": "CatalogueRecord",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

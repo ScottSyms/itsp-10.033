@@ -1,0 +1,139 @@
+{
+  "$defs": {
+    "ProfileSource": {
+      "properties": {
+        "table": {
+          "title": "Table",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "source_sha256": {
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "source_type": {
+          "default": "html",
+          "title": "Source Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "table",
+        "url",
+        "retrieved_at",
+        "source_sha256"
+      ],
+      "title": "ProfileSource",
+      "type": "object"
+    },
+    "RequirementKind": {
+      "enum": [
+        "control",
+        "activity",
+        "unknown"
+      ],
+      "title": "RequirementKind",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "profile_id": {
+      "default": "medium",
+      "title": "Profile Id",
+      "type": "string"
+    },
+    "profile_publication": {
+      "default": "ITSP.10.033-01",
+      "title": "Profile Publication",
+      "type": "string"
+    },
+    "control_id": {
+      "title": "Control Id",
+      "type": "string"
+    },
+    "family_id": {
+      "title": "Family Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "requirement_kind": {
+      "$ref": "#/$defs/RequirementKind"
+    },
+    "selected": {
+      "title": "Selected",
+      "type": "boolean"
+    },
+    "selected_raw": {
+      "title": "Selected Raw",
+      "type": "string"
+    },
+    "suggested_enhancements": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Suggested Enhancements",
+      "type": "array"
+    },
+    "suggested_placeholder_values_raw": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Suggested Placeholder Values Raw"
+    },
+    "profile_specific_notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Profile Specific Notes"
+    },
+    "description_raw": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description Raw"
+    },
+    "source": {
+      "$ref": "#/$defs/ProfileSource"
+    }
+  },
+  "required": [
+    "control_id",
+    "family_id",
+    "name",
+    "requirement_kind",
+    "selected",
+    "selected_raw",
+    "source"
+  ],
+  "title": "ProfileRecord",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

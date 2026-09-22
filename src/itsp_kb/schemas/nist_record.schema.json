@@ -1,0 +1,485 @@
+{
+  "$defs": {
+    "NistUpstreamSource": {
+      "properties": {
+        "publication": {
+          "default": "NIST SP 800-53 Rev. 5",
+          "title": "Publication",
+          "type": "string"
+        },
+        "metadata_version": {
+          "title": "Metadata Version",
+          "type": "string"
+        },
+        "oscal_version": {
+          "title": "Oscal Version",
+          "type": "string"
+        },
+        "git_commit": {
+          "title": "Git Commit",
+          "type": "string"
+        },
+        "source_sha256": {
+          "title": "Source Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "metadata_version",
+        "oscal_version",
+        "git_commit",
+        "source_sha256"
+      ],
+      "title": "NistUpstreamSource",
+      "type": "object"
+    },
+    "OscalGuideline": {
+      "additionalProperties": true,
+      "properties": {
+        "prose": {
+          "title": "Prose",
+          "type": "string"
+        }
+      },
+      "required": [
+        "prose"
+      ],
+      "title": "OscalGuideline",
+      "type": "object"
+    },
+    "OscalLink": {
+      "additionalProperties": true,
+      "properties": {
+        "href": {
+          "title": "Href",
+          "type": "string"
+        },
+        "rel": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rel"
+        },
+        "media-type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Media-Type"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        },
+        "resolved_resource": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resolved Resource"
+        }
+      },
+      "required": [
+        "href"
+      ],
+      "title": "OscalLink",
+      "type": "object"
+    },
+    "OscalParam": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "usage": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Usage"
+        },
+        "values": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Values",
+          "type": "array"
+        },
+        "select": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/OscalSelect"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "constraints": {
+          "default": [],
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Constraints",
+          "type": "array"
+        },
+        "guidelines": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OscalGuideline"
+          },
+          "title": "Guidelines",
+          "type": "array"
+        },
+        "props": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OscalProp"
+          },
+          "title": "Props",
+          "type": "array"
+        },
+        "links": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OscalLink"
+          },
+          "title": "Links",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "OscalParam",
+      "type": "object"
+    },
+    "OscalPart": {
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Id"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "ns": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ns"
+        },
+        "class": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Class"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Title"
+        },
+        "prose": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prose"
+        },
+        "props": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OscalProp"
+          },
+          "title": "Props",
+          "type": "array"
+        },
+        "links": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OscalLink"
+          },
+          "title": "Links",
+          "type": "array"
+        },
+        "parts": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OscalPart"
+          },
+          "title": "Parts",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "OscalPart",
+      "type": "object"
+    },
+    "OscalProp": {
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        },
+        "ns": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ns"
+        },
+        "class": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Class"
+        },
+        "uuid": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uuid"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "title": "OscalProp",
+      "type": "object"
+    },
+    "OscalSelect": {
+      "additionalProperties": true,
+      "properties": {
+        "how-many": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "How-Many"
+        },
+        "choice": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Choice",
+          "type": "array"
+        }
+      },
+      "title": "OscalSelect",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "upstream_id": {
+      "title": "Upstream Id",
+      "type": "string"
+    },
+    "canonical_candidate_id": {
+      "title": "Canonical Candidate Id",
+      "type": "string"
+    },
+    "family_id": {
+      "title": "Family Id",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "oscal_uuid": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Oscal Uuid"
+    },
+    "parent_upstream_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Upstream Id"
+    },
+    "props": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/OscalProp"
+      },
+      "title": "Props",
+      "type": "array"
+    },
+    "params": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/OscalParam"
+      },
+      "title": "Params",
+      "type": "array"
+    },
+    "parts": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/OscalPart"
+      },
+      "title": "Parts",
+      "type": "array"
+    },
+    "child_control_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Child Control Ids",
+      "type": "array"
+    },
+    "links": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/OscalLink"
+      },
+      "title": "Links",
+      "type": "array"
+    },
+    "unmapped": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Unmapped",
+      "type": "object"
+    },
+    "source": {
+      "$ref": "#/$defs/NistUpstreamSource"
+    }
+  },
+  "required": [
+    "upstream_id",
+    "canonical_candidate_id",
+    "family_id",
+    "title",
+    "source"
+  ],
+  "title": "NistUpstreamRecord",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

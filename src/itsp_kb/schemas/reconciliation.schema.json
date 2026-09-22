@@ -1,0 +1,139 @@
+{
+  "$defs": {
+    "FieldDiff": {
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/FieldDiffKind"
+        },
+        "nist_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nist Hash"
+        },
+        "canada_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Canada Hash"
+        },
+        "normalization_equal": {
+          "default": false,
+          "title": "Normalization Equal",
+          "type": "boolean"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        }
+      },
+      "required": [
+        "field",
+        "kind"
+      ],
+      "title": "FieldDiff",
+      "type": "object"
+    },
+    "FieldDiffKind": {
+      "enum": [
+        "same",
+        "formatting_only",
+        "modified",
+        "canada_only",
+        "nist_only",
+        "unresolved"
+      ],
+      "title": "FieldDiffKind",
+      "type": "string"
+    },
+    "ReconciliationStatus": {
+      "enum": [
+        "verified_inherited",
+        "verified_modified",
+        "verified_reclassified",
+        "verified_canada_only",
+        "unresolved"
+      ],
+      "title": "ReconciliationStatus",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "canadian_id": {
+      "title": "Canadian Id",
+      "type": "string"
+    },
+    "nist_oscal_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Nist Oscal Id"
+    },
+    "status": {
+      "$ref": "#/$defs/ReconciliationStatus"
+    },
+    "field_diffs": {
+      "items": {
+        "$ref": "#/$defs/FieldDiff"
+      },
+      "title": "Field Diffs",
+      "type": "array"
+    },
+    "canada_only_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Canada Only Fields",
+      "type": "array"
+    },
+    "nist_only_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Nist Only Fields",
+      "type": "array"
+    },
+    "review_required": {
+      "default": false,
+      "title": "Review Required",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "canadian_id",
+    "nist_oscal_id",
+    "status"
+  ],
+  "title": "ReconciliationRecord",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

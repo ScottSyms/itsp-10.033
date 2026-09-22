@@ -95,3 +95,75 @@ def write_snapshot(
 
 def read_fetch_meta(snapshot_dir: Path) -> dict[str, Any]:
     return json.loads((snapshot_dir / "fetch.json").read_text(encoding="utf-8"))
+
+
+def build_manifest(
+    *,
+    data_root: Path = DEFAULT_DATA_ROOT,
+    extractor_version: str,
+    schema_version: str,
+    validation_passed: bool,
+    validation_warnings: list[str],
+) -> dict[str, Any]:
+    """The build manifest (spec S14.1). Counts are always calculated from the
+    persisted output, never hard-coded."""
+    import orjson
+
+    def _load_jsonl(path: Path) -> list[dict]:
+        if not path.exists():
+            return []
+        return [orjson.loads(line) for line in path.read_bytes().splitlines() if line]
+
+    nist_records = _load_jsonl(data_root / "normalized" / "nist" / "records.jsonl")
+    catalogue = _load_jsonl(data_root / "normalized" / "reconciliation" / "catalogue.jsonl")
+    profile_rows = _load_jsonl(data_root / "output" / "profiles" / "medium.jsonl")
+    edges = _load_jsonl(data_root / "output" / "relationships" / "edges.jsonl")
+
+    record_counts = {
+        "nist_records": len(nist_records),
+        "canadian_base_records": sum(1 for r in catalogue if r.get("record_kind") == "base"),
+        "canadian_enhancements": sum(1 for r in catalogue if r.get("record_kind") == "enhancement"),
+        "verified_inherited": sum(1 for r in catalogue if r.get("reconciliation_status") == "verified_inherited"),
+        "verified_modified": sum(1 for r in catalogue if r.get("reconciliation_status") == "verified_modified"),
+        "verified_reclassified": sum(1 for r in catalogue if r.get("reconciliation_status") == "verified_reclassified"),
+        "verified_canada_only": sum(1 for r in catalogue if r.get("reconciliation_status") == "verified_canada_only"),
+        "unresolved": sum(1 for r in catalogue if r.get("reconciliation_status") == "unresolved"),
+        "profile_rows": len(profile_rows),
+        "edges": len(edges),
+    }
+
+    sources: dict[str, Any] = {}
+    nist_meta_path = data_root / "normalized" / "nist" / "metadata.json"
+    if nist_meta_path.exists():
+        nist_meta = orjson.loads(nist_meta_path.read_bytes())
+        sources["nist"] = {
+            "metadata_version": nist_meta.get("metadata_version"),
+            "oscal_version": nist_meta.get("oscal_version"),
+            "git_commit": nist_meta.get("git_commit"),
+            "source_sha256": nist_meta.get("source_sha256"),
+        }
+    for source_id, key in (("itsp_10_033", "itsp_10_033"), ("itsp_10_033_01", "itsp_10_033_01")):
+        snap_dir = latest_raw_snapshot_dir(source_id, data_root=data_root)
+        if snap_dir is None:
+            continue
+        if source_id == "itsp_10_033":
+            # Multi-page source: hash across all family fetch.json files for one composite marker.
+            hashes = []
+            for sub in sorted(snap_dir.iterdir()):
+                fj = sub / "fetch.json"
+                if fj.exists():
+                    hashes.append(json.loads(fj.read_text(encoding="utf-8"))["sha256"])
+            sources[key] = {"source_sha256": sha256_text("".join(sorted(hashes)))}
+        else:
+            fj = snap_dir / "fetch.json"
+            if fj.exists():
+                sources[key] = {"source_sha256": json.loads(fj.read_text(encoding="utf-8"))["sha256"]}
+
+    return {
+        "build_id": utcnow_iso(),
+        "schema_version": schema_version,
+        "extractor_version": extractor_version,
+        "sources": sources,
+        "record_counts": record_counts,
+        "validation": {"passed": validation_passed, "warnings": validation_warnings},
+    }
