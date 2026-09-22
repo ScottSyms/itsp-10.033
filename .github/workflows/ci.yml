@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 13 * * 1" # weekly, Monday 13:00 UTC -- source-freshness job only
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Lint (ruff)
+        run: uv run ruff check src tests scripts
+
+      - name: Format check (ruff)
+        run: uv run ruff format --check src tests scripts
+
+      - name: Type check (mypy)
+        run: uv run mypy src/itsp_kb
+
+      # The test suite below is fully offline (fixture-driven) -- no network access,
+      # no live NIST/Cyber Centre fetch. It covers, per spec S23:
+      #   - offline NIST OSCAL fixture import       (tests/test_nist_oscal.py)
+      #   - offline Canadian fixture parse/build     (tests/test_catalogue_parser.py,
+      #                                                tests/test_profile_parser.py)
+      #   - reconciliation validation                (tests/test_reconciliation.py)
+      #   - full offline build + idempotency/diff     (tests/test_snapshots.py)
+      #   - JSON Schema validation (wired into        (tests/test_validation.py)
+      #     itsp_kb.validate, exercised by the above)
+      #   - derived OSCAL export validation           (tests/test_exporters.py)
+      - name: Run tests
+        run: uv run pytest -q
+
+  source-freshness:
+    # Separate, manual/scheduled job (spec S23): checks the *live* sources without
+    # ever auto-accepting a new reconciliation into the committed dataset.
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: uv sync
+      - name: Fetch live sources and report resolved versions/hashes
+        run: |
+          uv run itsp-kb fetch --force-fetch
+          echo "--- NIST OSCAL fetch.json ---"
+          cat data/raw/nist_sp800_53_rev5_oscal/*/fetch.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-fetch-metadata
+          path: data/raw/**/fetch.json

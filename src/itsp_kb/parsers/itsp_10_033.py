@@ -11,6 +11,7 @@ for inventing the entire NIST-derived data model from HTML."
 from __future__ import annotations
 
 import logging
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -66,7 +67,7 @@ def _parse_references(nodes: list[Tag]) -> list[Reference]:
             references.append(
                 Reference(
                     title=text,
-                    url=anchor["href"] if anchor else None,
+                    url=str(anchor["href"]) if anchor else None,
                     publisher=None,
                     external=True,
                     source_authority="Canada",
@@ -159,7 +160,7 @@ def parse_family_html(
 
     records: list[CanadianParsedRecord] = []
     for h2 in main.find_all("h2", id=True):
-        id_match = H2_ID_RE.match(h2["id"])
+        id_match = H2_ID_RE.match(str(h2["id"]))
         if not id_match:
             continue
         canonical_id = id_match.group("id")
@@ -312,7 +313,7 @@ def parse_all_families(
     return CanadaParseResult(families=families_seen, records=all_records)
 
 
-def _write_jsonl(path: Path, models: list[BaseModel]) -> None:
+def _write_jsonl(path: Path, models: Sequence[BaseModel]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("wb") as f:
         for m in models:

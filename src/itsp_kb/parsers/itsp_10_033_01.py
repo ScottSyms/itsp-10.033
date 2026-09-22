@@ -14,6 +14,7 @@ directly -- no separate enhancement-selection parsing is needed.
 from __future__ import annotations
 
 import logging
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -93,11 +94,11 @@ def _parse_table(
 def parse_profile_html(html: bytes, *, url: str, retrieved_at: str, source_sha256: str) -> list[ProfileRecord]:
     soup = BeautifulSoup(html, "lxml")
     records: list[ProfileRecord] = []
-    captions = [c for c in soup.find_all("caption") if (c.get("id") or "").startswith("tab4.")]
+    captions = [c for c in soup.find_all("caption") if str(c.get("id") or "").startswith("tab4.")]
     if not captions:
         raise ProfileJoinError("No 'tab4.N' profile tables found on the Medium-profile page")
 
-    for caption in sorted(captions, key=lambda c: int(c["id"].split(".", 1)[1])):
+    for caption in sorted(captions, key=lambda c: int(str(c["id"]).split(".", 1)[1])):
         table = caption.find_parent("table")
         if table is None:
             logger.warning("Caption '%s' has no parent <table>; skipping", caption.get("id"))
@@ -180,7 +181,7 @@ def parse_and_join_profile(
     return ProfileParseResult(records=records, unresolved=unresolved)
 
 
-def _write_jsonl(path: Path, models: list[BaseModel]) -> None:
+def _write_jsonl(path: Path, models: Sequence[BaseModel]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("wb") as f:
         for m in models:

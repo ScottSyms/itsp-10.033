@@ -67,6 +67,7 @@ def import_nist(
 
     data_root = _data_root(output)
     result = import_nist_oscal(data_root=data_root, strict=strict, allow_newer_oscal=allow_newer_oscal)
+    assert result.metadata is not None
     logger.info(
         "imported NIST OSCAL: %d groups, %d controls, %d unmapped structures",
         result.metadata.group_count,

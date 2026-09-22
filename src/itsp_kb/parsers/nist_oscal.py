@@ -11,6 +11,7 @@ alone (S5.6).
 from __future__ import annotations
 
 import logging
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -298,7 +299,7 @@ def import_nist_oscal(
     return NistImportResult(families=families, records=records, relationships=relationships, metadata=metadata)
 
 
-def _write_jsonl(path: Path, models: list[BaseModel]) -> None:
+def _write_jsonl(path: Path, models: Sequence[BaseModel]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("wb") as f:
         for m in models:

@@ -206,7 +206,7 @@ def discover_itsp_10_033_families(client: httpx.Client, toc_url: str) -> list[tu
     }
     seen: dict[str, str] = {}
     for a in main.find_all("a", href=True):
-        href = a["href"]
+        href = str(a["href"])
         name = a.get_text(strip=True)
         if "/itsp10033/" not in href or "#" in href:
             continue

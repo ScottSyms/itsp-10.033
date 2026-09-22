@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import logging
 import re
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -25,6 +26,7 @@ from itsp_kb.ids import parse_canadian_id
 from itsp_kb.models.catalogue import CanadianDelta, CatalogueRecord
 from itsp_kb.models.common import (
     FieldDiffKind,
+    NistSourceRef,
     Origin,
     ReconciliationStatus,
     RecordKind,
@@ -341,17 +343,17 @@ def _reconcile_one(
 
     sources = RecordSources(
         nist=(
-            {
-                "publication": nist_match.source.publication,
-                "metadata_version": nist_match.source.metadata_version,
-                "oscal_version": nist_match.source.oscal_version,
-                "git_commit": nist_match.source.git_commit,
-                "source_sha256": nist_match.source.source_sha256,
-            }
+            NistSourceRef(
+                publication=nist_match.source.publication,
+                metadata_version=nist_match.source.metadata_version,
+                oscal_version=nist_match.source.oscal_version,
+                git_commit=nist_match.source.git_commit,
+                source_sha256=nist_match.source.source_sha256,
+            )
             if nist_match
             else None
         ),
-        canada=canada_source_ref.model_dump() if canada_source_ref else None,
+        canada=canada_source_ref,
     )
 
     record_kind = RecordKind.ENHANCEMENT if "(" in canonical_id else RecordKind.BASE
@@ -484,7 +486,7 @@ def _compute_counts(bundle: ReconciledBundle) -> dict[str, int]:
     return counts
 
 
-def _write_jsonl(path: Path, models: list[BaseModel]) -> None:
+def _write_jsonl(path: Path, models: Sequence[BaseModel]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("wb") as f:
         for m in models:
